@@ -16,7 +16,24 @@ socket_server = b"tcp://127.0.0.1:5556"
 
 class Subscriber:
 
+    """
+    Class Subscriber
+
+    This class is used to subscribe to a publisher and receive data from it.
+    The data is stored in the class and can be accessed through the class methods.
+    The class also has a method to plot the received data.
+    """
+
     def __init__(self, plot=True):
+
+        """
+        Constructor of the Subscriber class
+        
+        Parameters
+        ----------
+        plot : bool
+            If true, the class will plot the received data
+        """
 
         self.plot = plot
         self.frame_counter = 0
@@ -60,6 +77,9 @@ class Subscriber:
         self.scores = []
 
     def init(self):
+        """
+        Method to initialize the plot
+        """
         self.line_bx.set_data([],[])
         self.line_px.set_data([],[])
         self.line_score.set_data([],[])
@@ -68,7 +88,9 @@ class Subscriber:
         return self.line_bx, self.line_px, self.line_score, self.line_mdx, self.line_mdy
 
     def update(self, frame):
-
+        """
+        Method to update the plot with new data
+        """
         self.listen()
         self.line_bx.set_data(self.ts, self.bxs)
         self.line_px.set_data(self.ts, self.pxs)
@@ -84,7 +106,9 @@ class Subscriber:
         return self.line_bx, self.line_px, self.line_score, self.line_mdx, self.line_mdy
 
     def listen(self):
-
+        """
+        Method to receive data from the publisher
+        """
         print("listening")
         data = self.socket.recv_multipart()
         print("received")
@@ -110,7 +134,9 @@ class Subscriber:
         self.ts.append(variables["t"])
 
     def main(self):
-
+        """
+        Main method of the class
+        """
         if self.plot:
             anim = FuncAnimation(self.fig, self.update, init_func=self.init, interval=1, blit=True)
             plt.show()
@@ -128,15 +154,22 @@ class Subscriber:
        
 
 class Publisher:
-
+    """
+    Class to publish messages
+    """
     def __init__(self):
-        
+        """
+        Constructor of the Publisher class
+        """
         self.context = zmq.Context()
         self.socket = self.context.socket(zmq.PUB)
         self.socket.connect("tcp://127.0.0.1:5556")
         self.socket.setsockopt(zmq.CONFLATE, 1)
 
     def send(self, msg):
+        """
+        Method to send a message to the IA2 server
+        """
         self.socket.send_string("%s %s" % (topic_pub, msg))
 
 if __name__ == "__main__":
