@@ -143,15 +143,7 @@ class Subscriber:
         else: 
             while True:
                 self.listen()
-                print("len received data : {}".format(len(self.bxs)))
-
-              
-        
-            
-
-        
-        
-       
+                print("len received data : {}".format(len(self.bxs)))       
 
 class Publisher:
     """
