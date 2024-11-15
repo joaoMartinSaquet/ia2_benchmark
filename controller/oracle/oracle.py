@@ -7,10 +7,16 @@ from common.pub_sub import Subscriber, Publisher
 
 from collections import deque
 
+
 class controller():
+    """
+    Class that implements a controller using the subscriber and publisher
+    """
     
     def __init__(self):
-        
+        """
+        Constructor of the controller class
+        """
         self.subscriber = Subscriber()
         self.publisher = Publisher()
 
@@ -19,7 +25,9 @@ class controller():
         
 
     def main(self):
-
+        """
+        Main method of the controller class
+        """
         while True:
 
             self.subscriber.listen()
