@@ -7,13 +7,14 @@ from matplotlib.animation import FuncAnimation
 import re
 
 
-PLOT = False
+PLOT = True
 
 topic_sub = b"GameData/"
 topic_pub = b"Controller/"
-socket_server = b"tcp://127.0.0.1:5556"
+server = "tcp://127.0.0.1"
+game_data_socket_port = "5556"
 
-
+controller_socket_port = "5560"
 class Subscriber:
 
     """
@@ -40,7 +41,7 @@ class Subscriber:
         #  Socket to talk to subscriber
         context = zmq.Context()
         self.socket = context.socket(zmq.SUB)
-        self.socket.connect(socket_server)
+        self.socket.connect(server + ":" + game_data_socket_port)
         self.socket.setsockopt(zmq.CONFLATE, 1)
 
         # set Subscribe 
@@ -109,9 +110,7 @@ class Subscriber:
         """
         Method to receive data from the publisher
         """
-        print("listening")
         data = self.socket.recv_multipart()
-        print("received")
         # print("data : {}".format(data)) 
         topic, data = data[0], data[1]
 
@@ -155,14 +154,14 @@ class Publisher:
         """
         self.context = zmq.Context()
         self.socket = self.context.socket(zmq.PUB)
-        self.socket.connect("tcp://127.0.0.1:5556")
+        self.socket.connect(server + ":" + controller_socket_port)
         self.socket.setsockopt(zmq.CONFLATE, 1)
 
     def send(self, msg):
         """
         Method to send a message to the IA2 server
         """
-        self.socket.send_string("%s %s" % (topic_pub, msg))
+        self.socket.send_string("%s, %s" % (topic_pub, msg))
 
 if __name__ == "__main__":
 

@@ -36,8 +36,8 @@ class controller():
             self.dx_ctrl.append(self.subscriber.bxs[-1])
             self.dy_ctrl.append(self.subscriber.bys[-1])
             if len(self.dx_ctrl) > 1:
-                hdx = self.dx_ctrl[0] - self.dx_ctrl[1]
-                hdy = self.dy_ctrl[0] - self.dy_ctrl[1]
+                hdx = self.dx_ctrl[1] - self.dx_ctrl[0]
+                hdy = self.dy_ctrl[1] - self.dy_ctrl[0]
 
                 msg = f"mdx: {hdx}; mdy: {hdy};"
                 print("send : {}".format(msg))
