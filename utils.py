@@ -30,6 +30,7 @@ def read_data(file_path):
         - dby (list): List of differences between consecutive By values.
     """
     data_log = pandas.read_csv("../" + file_path, sep=";")
+    
     bx = data_log["Bx"]
     by = data_log["By"]
     px = data_log["Px"]
@@ -41,8 +42,11 @@ def read_data(file_path):
     index = [i for i in range(len(mdx))]
     dbx = [bx[i+1] - bx[i] for i in range(len(bx)-1)]
     dby = [by[i+1] - by[i] for i in range(len(by)-1)]
-
-    return bx, by, px, py, mdx, mdy, score, time, dbx, dby
+    # try : 
+    #     print('dropping ')
+    #     data_log.drop(columns=['Unnamed: 8'], inplace=True)
+    # except: pass
+    return bx, by, px, py, mdx, mdy, score, time, dbx, dby, data_log
 
 
 

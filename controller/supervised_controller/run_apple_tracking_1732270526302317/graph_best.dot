@@ -1,0 +1,16 @@
+digraph cgp {
+	size = "4,4";
+	est_dx [shape=oval];
+	mult_69 -> est_dx [label="0"];
+	mult_69 [label= "69_mult", shape=none];
+	exp_9 -> mult_69 [label="0"];
+	exp_9 [label= "9_exp", shape=none];
+	mdx_m3 [shape=polygon,sides=6];
+	mdx_m3 -> exp_9 [label="0"];
+	sqrtxy_5 -> mult_69 [label="1"];
+	sqrtxy_5 [label= "5_sqrtxy", shape=none];
+	mdy_m0 [shape=polygon,sides=6];
+	mdy_m0 -> sqrtxy_5 [label="0"];
+	mdx_m1 [shape=polygon,sides=6];
+	mdx_m1 -> sqrtxy_5 [label="1"];
+}

@@ -1,0 +1,12 @@
+digraph cgp {
+	size = "4,4";
+	est_dx [shape=oval];
+	sum_45 -> est_dx [label="0"];
+	sum_45 [label= "45_sum", shape=none];
+	exp_10 -> sum_45 [label="0"];
+	exp_10 [label= "10_exp", shape=none];
+	mdx_m0 [shape=polygon,sides=6];
+	mdx_m0 -> exp_10 [label="0"];
+	mdx_m2 [shape=polygon,sides=6];
+	mdx_m2 -> sum_45 [label="1"];
+}

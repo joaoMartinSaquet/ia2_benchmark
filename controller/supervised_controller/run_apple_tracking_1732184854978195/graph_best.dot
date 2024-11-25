@@ -1,0 +1,14 @@
+digraph cgp {
+	size = "4,4";
+	est_dx [shape=oval];
+	sum_70 -> est_dx [label="0"];
+	sum_70 [label= "70_sum", shape=none];
+	sum_5 -> sum_70 [label="0"];
+	sum_5 [label= "5_sum", shape=none];
+	mdx_m3 [shape=polygon,sides=6];
+	mdx_m3 -> sum_5 [label="0"];
+	mdy_m1 [shape=polygon,sides=6];
+	mdy_m1 -> sum_5 [label="1"];
+	mdx_m0 [shape=polygon,sides=6];
+	mdx_m0 -> sum_70 [label="1"];
+}

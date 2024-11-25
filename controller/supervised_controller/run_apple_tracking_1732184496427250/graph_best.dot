@@ -1,0 +1,30 @@
+digraph cgp {
+	size = "4,4";
+	est_dx [shape=oval];
+	mult_86 -> est_dx [label="0"];
+	mult_86 [label= "86_mult", shape=none];
+	sum_41 -> mult_86 [label="0"];
+	sum_41 [label= "41_sum", shape=none];
+	mdx_m0 [shape=polygon,sides=6];
+	mdx_m0 -> sum_41 [label="0"];
+	sum_3 -> sum_41 [label="1"];
+	sum_3 [label= "3_sum", shape=none];
+	mdx_m3 [shape=polygon,sides=6];
+	mdx_m3 -> sum_3 [label="0"];
+	mdy_m1 [shape=polygon,sides=6];
+	mdy_m1 -> sum_3 [label="1"];
+	sqrt_68 -> mult_86 [label="1"];
+	sqrt_68 [label= "68_sqrt", shape=none];
+	one_54 -> sqrt_68 [label="0"];
+	one_54 [label= "54_one", shape=none];
+	gt_14 -> one_54 [label="0"];
+	gt_14 [label= "14_gt", shape=none];
+	sum_6 -> gt_14 [label="0"];
+	sum_6 [label= "6_sum", shape=none];
+	mdy_m0 [shape=polygon,sides=6];
+	mdy_m0 -> sum_6 [label="0"];
+	mdy_m3 [shape=polygon,sides=6];
+	mdy_m3 -> sum_6 [label="1"];
+	mdx_m2 [shape=polygon,sides=6];
+	mdx_m2 -> gt_14 [label="1"];
+}
