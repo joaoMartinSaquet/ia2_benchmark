@@ -1,9 +1,0 @@
-# CGP (Cartesian Genetic Programming) Parameters
-col: 10 # old 30
-row: 10
-mu: 4 # parent numbers
-lambda: 9 #28 # Number of individuals
-mutation_rate_nodes: 0.3
-mutation_rate_outputs: 0.6
-n_it: 500 #112 # Number of iterations or generations
-genome: null # Placeholder for the genome, set to None (or null in YAML) by default

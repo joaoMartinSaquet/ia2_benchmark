@@ -29,7 +29,7 @@ def read_data(file_path):
         - dbx (list): List of differences between consecutive Bx values.
         - dby (list): List of differences between consecutive By values.
     """
-    data_log = pandas.read_csv("../" + file_path, sep=";")
+    data_log = pandas.read_csv(file_path, sep=";")
     
     bx = data_log["Bx"]
     by = data_log["By"]

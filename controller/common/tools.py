@@ -41,3 +41,14 @@ def stack(x, n_stack = 4):
 
     return  vec_stack
 
+def normalize(x, min, max, type = "-1/1"):
+    if type == "-1/1":
+        return 2 * (x - min) / (max - min) - 1
+    else :
+        return (x - min) / (max - min)
+    
+def denormalize(x, min, max, type = "-1/1"):
+    if type == "-1/1":
+        return (x + 1) / 2 * (max - min) + min
+    else :
+        return x * (max - min) + min
